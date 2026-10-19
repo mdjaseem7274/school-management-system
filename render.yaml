@@ -1,0 +1,18 @@
+# One-click setup for Render (New > Blueprint). Render asks you for the values marked sync: false.
+services:
+  - type: web
+    name: dps-school-portal
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
